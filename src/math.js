@@ -1,4 +1,4 @@
 function add(a, b) {
-  return a - b; // Changed from a + b to break the test
+  return a + b;
 }
 module.exports = { add };
