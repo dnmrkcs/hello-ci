@@ -8,6 +8,12 @@ describe("Home Page E2E Test", () => {
   beforeAll(async () => {
     driver = await new Builder()
       .forBrowser("chrome")
+      .setChromeOptions(
+        new (require("selenium-webdriver/chrome").Options)()
+          .addArguments("--no-sandbox")
+          .addArguments("--disable-dev-shm-usage")
+          .addArguments("--headless")
+      )
       .usingServer(process.env.SELENIUM_URL || "http://localhost:4444/wd/hub")
       .build();
   });
