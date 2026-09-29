@@ -30,8 +30,12 @@ pipeline {
 
         stage('Start App') {
             steps {
-                sh 'nohup node src/app.js > app.log 2>&1 &'
-                sh 'sleep 5'
+                sh '''
+                    nohup node src/app.js > app.log 2>&1 &
+                    sleep 5
+                    cat app.log
+                    curl -I http://localhost:3000
+                '''
             }
         }
 
