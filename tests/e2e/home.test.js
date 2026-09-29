@@ -27,4 +27,3 @@ describe("Home Page E2E Test", () => {
     expect(text).toBe("Hello DevOps");
   });
 });
-```;
