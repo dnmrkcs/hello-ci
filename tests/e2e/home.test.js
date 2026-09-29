@@ -18,12 +18,13 @@ describe("Home Page E2E Test", () => {
     }
   });
 
-  test("should display Welcome to CI/CD", async () => {
+  test("should display Hello DevOps", async () => {
     await driver.get("http://jenkins:3000");
 
     const heading = await driver.findElement(By.css("h1"));
     const text = await heading.getText();
 
-    expect(text).toBe("Welcome to CI/CD");
+    expect(text).toBe("Hello DevOps");
   });
 });
+```;
