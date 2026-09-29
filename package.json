@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --ci"
+    "test": "jest tests/math.test.js --ci",
+    "test:e2e": "jest tests/e2e/home.test.js --ci"
   },
   "dependencies": {
     "express": "^5.2.1"

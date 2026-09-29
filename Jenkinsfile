@@ -37,7 +37,7 @@ pipeline {
 
         stage('UI Test') {
             steps {
-                sh 'npx jest tests/e2e/home.test.js'
+                sh 'npm run test:e2e'
             }
         }
     }
