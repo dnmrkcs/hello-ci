@@ -44,6 +44,7 @@ pipeline {
 
     post {
         always {
+            sh 'find . -name "junit.xml" -type f -print'
             junit testResults: '**/junit.xml', allowEmptyResults: true
         }
     }
