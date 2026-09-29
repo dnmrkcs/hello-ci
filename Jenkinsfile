@@ -1,39 +1,50 @@
 pipeline {
+
     agent any
-    
+
+    tools {
+        nodejs 'node20'
+    }
+
     triggers {
         pollSCM('H/2 * * * *')
     }
-    
+
     environment {
-        SELENIUM_REMOTE_URL = 'http://selenium:4444/wd/hub'
+        SELENIUM_URL = 'http://selenium:4444/wd/hub'
     }
-    
-    tools { 
-        nodejs 'node20' 
-    }
-    
+
     stages {
-        stage('Install') { 
-            steps { 
-                sh 'npm install' 
-            } 
-        }
-        stage('Start App') {
+
+        stage('Install') {
             steps {
-                sh 'node src/app.js &'
+                sh 'npm install'
             }
         }
-        stage('Test') {
+
+        stage('Unit Test') {
             steps {
                 sh 'npm test'
             }
         }
+
+        stage('Start App') {
+            steps {
+                sh 'nohup node src/app.js > app.log 2>&1 &'
+                sh 'sleep 5'
+            }
+        }
+
+        stage('UI Test') {
+            steps {
+                sh 'npx jest tests/e2e/home.test.js'
+            }
+        }
     }
-    
+
     post {
         always {
-            junit '**/junit.xml'
+            junit testResults: '**/junit.xml', allowEmptyResults: true
         }
     }
 }

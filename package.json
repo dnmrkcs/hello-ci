@@ -6,16 +6,22 @@
   "scripts": {
     "test": "jest --ci"
   },
-  "dependencies": {},
+  "dependencies": {
+    "express": "^5.2.1"
+  },
   "devDependencies": {
     "jest": "^30.5.2",
     "jest-junit": "^16.0.0",
-    "selenium-webdriver": "^4.27.0"
+    "selenium-webdriver": "^4.49.0"
   },
   "jest": {
     "reporters": [
       "default",
       "jest-junit"
     ]
+  },
+  "jest-junit": {
+    "outputDirectory": "./test-results",
+    "outputName": "junit.xml"
   }
 }
