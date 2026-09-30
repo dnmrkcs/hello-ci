@@ -12,7 +12,7 @@ describe("Home Page E2E Test", () => {
         new (require("selenium-webdriver/chrome").Options)()
           .addArguments("--no-sandbox")
           .addArguments("--disable-dev-shm-usage")
-          .addArguments("--headless")
+          .addArguments("--headless"),
       )
       .usingServer(process.env.SELENIUM_URL || "http://localhost:4444/wd/hub")
       .build();
